@@ -25,18 +25,33 @@ const Mymovie= new mongoose.model("Mymovie",mymovieSchema) ; //creation of class
 
  const CreateDocument= async () => { 
 
-  
- const reactMovie= new Mymovie({
+   try{
+ const thrillMovie= new Mymovie({     //multiple insertion
 
-  movie:"soyaa",
-  actor:"Smk",
-  budget:5000
+  movie:"dabang",
+  actor:"salman",
+  budget:100
   
  })
- const result= await reactMovie.save();
- console.log(result); 
 
- 
+ const comedyMovie= new Mymovie({
+
+  movie:"hera pheri",
+  actor:"salman",
+  budget:200
+  
+ })
+
+
+
+
+ const result= await Mymovie.insertMany([thrillMovie,comedyMovie]);
+ console.log(result); 
+}
+
+catch(err){
+  console.log(err);
+}
 
 
 }
